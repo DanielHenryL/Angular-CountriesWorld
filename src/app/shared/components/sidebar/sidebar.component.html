@@ -1,0 +1,14 @@
+<div class="sidebar">
+  <ul class="list-group list-group-horizontal-sm">
+    <a
+      class="list-group-item list-group-item-action"
+      *ngFor="let ruta of rutas"
+      [routerLink]='ruta.ruta'
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact:true}"
+    >
+      {{ ruta.name }}
+    </a>
+  </ul>
+
+</div>

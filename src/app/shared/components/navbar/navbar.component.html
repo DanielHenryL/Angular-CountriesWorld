@@ -1,12 +1,9 @@
-<nav class="navbar navbar-expand"  >
-  <div class="container container-fluid">
-
-    <div>
-      <ul class="nav nav-underline ">
-        <li class="nav-item" *ngFor="let ruta of rutas">
-          <a class="nav-link text-dark" routerLinkActive="active" [routerLink]='ruta' [routerLinkActiveOptions]="{exact:true}">{{ruta | titlecase}}</a>
-        </li>
-      </ul>
-    </div>
+<nav class="navbar navbar-expand">
+  <div class="container container-fluid justify-content-center">
+    <ul class="nav nav-underline gap-5">
+      <li class="nav-item" *ngFor="let ruta of rutas">
+        <a class="nav-link text-dark" routerLinkActive="active" [routerLink]='ruta'>{{ruta | titlecase}}</a>
+      </li>
+    </ul>
   </div>
 </nav>

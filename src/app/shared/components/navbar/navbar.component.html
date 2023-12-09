@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand"  >
+  <div class="container container-fluid">
+
+    <div>
+      <ul class="nav nav-underline ">
+        <li class="nav-item" *ngFor="let ruta of rutas">
+          <a class="nav-link text-dark" routerLinkActive="active" [routerLink]='ruta' [routerLinkActiveOptions]="{exact:true}">{{ruta | titlecase}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

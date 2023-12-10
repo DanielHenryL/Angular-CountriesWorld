@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Rutas } from '../../interfaces/rutasSidebar.interface';
 
 @Component({
   selector: 'app-principal-page',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrl: './principal-page.component.css'
 })
 export class PrincipalPageComponent {
-
+  public rutas:Rutas[] =[
+    {
+      param:'by-capital',
+      name:'Por capital'
+    },
+    {
+      param:'by-country',
+      name:'Por país'
+    },
+    {
+      param:'by-region',
+      name:'Por región'
+    },
+  ]
 }

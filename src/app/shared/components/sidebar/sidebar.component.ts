@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Rutas } from '../../../countries/interfaces/rutasSidebar.interface';
+
+
 
 @Component({
   selector: 'shared-sidebar',
@@ -6,18 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  public rutas = [
-    {
-      ruta:'by-capital',
-      name:'Por capital'
-    },
-    {
-      ruta:'by-country',
-      name:'Por país'
-    },
-    {
-      ruta:'by-region',
-      name:'Por región'
-    },
-  ]
+  @Input()
+  public rutas:Rutas[] = []
 }

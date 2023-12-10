@@ -1,8 +1,20 @@
 <div class="row">
   <div class="col-12">
-    <!-- <shared-search-box [placeholder]="placeholder"></shared-search-box> -->
+    <div class="sidebar">
+      <ul class="list-group list-group-horizontal-sm">
+        <a
+          *ngFor="let ruta of rutas"
+          class="list-group-item list-group-item-action"
+          (click)="searchBox(ruta.param)"
+          [ngClass]="{'active': selectedRegion === ruta.param}"
+        >
+          {{ ruta.name }}
+        </a>
+      </ul>
+
+    </div>
   </div>
-  <div class="col-12">
-    resultados
+  <div class="col-12 mt-5">
+    <countries-card [countries]="countries"></countries-card>
   </div>
 </div>

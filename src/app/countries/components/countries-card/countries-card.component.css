@@ -1,0 +1,7 @@
+@media (min-width: 600px) {
+  .dimension{
+    width: 100%;
+    height: 119px;
+    object-fit: cover;
+  }
+}

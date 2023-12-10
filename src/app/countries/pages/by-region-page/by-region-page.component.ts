@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './by-region-page.component.css'
 })
 export class ByRegionPageComponent {
-
+  public placeholder = 'Buscar por región';
 }

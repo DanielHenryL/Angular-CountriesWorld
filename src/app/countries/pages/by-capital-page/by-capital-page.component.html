@@ -1,1 +1,8 @@
-<p>by-capital-page works!</p>
+<div class="row">
+  <div class="col-12">
+    <shared-search-box [placeholder]="placeholder" (valueInput)="searchBox($event)"></shared-search-box>
+  </div>
+  <div class="col-12 mt-3">
+   <countries-card [countries]="countries"></countries-card>
+  </div>
+</div>

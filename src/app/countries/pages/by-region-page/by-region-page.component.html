@@ -4,17 +4,20 @@
       <ul class="list-group list-group-horizontal-sm">
         <a
           *ngFor="let ruta of rutas"
-          class="list-group-item list-group-item-action"
-          (click)="searchBox(ruta.param)"
+          class="list-group-item list-group-item-action text-center"
+          (click)="searchByRegion(ruta.param)"
           [ngClass]="{'active': selectedRegion === ruta.param}"
         >
           {{ ruta.name }}
         </a>
       </ul>
-
     </div>
   </div>
+  <div class="col-12 mt-3">
+    <shared-search-box *ngIf="selectedRegion != ''" [placeholder]="placeholder" (valueInput)="searchRegionByCountry($event)"></shared-search-box>
+    <span *ngIf="message.length > 1" class="text-danger">{{message}}</span>
+  </div>
   <div class="col-12 mt-5">
-    <countries-card [countries]="countries"></countries-card>
+    <countries-card [countries]="countriesRegion.length === 0 ? countries:countriesRegion"></countries-card>
   </div>
 </div>

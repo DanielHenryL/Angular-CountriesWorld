@@ -14,8 +14,10 @@ export class ByCapitalPageComponent {
 
   constructor( private countriesService:CountriesService){}
 
-  searchBox(term:string){
+  searchByCapital(term:string){
     this.countriesService.searchCapital( term )
-      .subscribe( countries => this.countries = countries )
+      .subscribe( countries => {
+        this.countries = countries
+      })
   }
 }

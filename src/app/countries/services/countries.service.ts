@@ -14,24 +14,18 @@ export class CountriesService {
   searchCapital( term:string ):Observable<Country[]>{
     const url = `${ this.apiUrl }/capital/${ term }`;
     return this.http.get<Country[]>( url )
-          .pipe(
-            catchError( error  => of([]))
-          )
+      .pipe( catchError( error => of([])))
   }
 
   searchCountry( term:string ):Observable<Country[]>{
     const url = `${ this.apiUrl }/name/${ term }`;
     return this.http.get<Country[]>(url)
-          .pipe(
-            catchError( error => of([]))
-            )
+      .pipe( catchError( error => of([])))
   }
 
   searchRegion( term:Region ):Observable<Country[]>{
     const url = `${ this.apiUrl }/region/${ term }`;
     return this.http.get<Country[]>(url)
-          .pipe(
-            catchError( error => of([]))
-            )
+      .pipe( catchError( error => of([])))
   }
 }

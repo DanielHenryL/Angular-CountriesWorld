@@ -60,7 +60,7 @@ export class ByRegionPageComponent {
     this.countriesRegion = []
     this.message = '';
     if( term.length !== 0 ){
-      this.countriesRegion = this.countries.filter( country => country.name.common.toLowerCase().startsWith( term.toLowerCase() ))
+      this.countriesRegion = this.countries.filter( country => country.name.common.toLowerCase().includes( term.toLowerCase() ))
       if ( this.countriesRegion.length === 0 ) {
         this.message = `No se encontro el pais con el termino ${ term}`
       }

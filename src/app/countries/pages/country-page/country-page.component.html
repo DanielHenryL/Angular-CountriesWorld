@@ -1,1 +1,151 @@
-<p>country-page works!</p>
+
+<ng-template #loading>
+  <div class="alert alert-info text-center">
+    Cargando ...
+  </div>
+</ng-template>
+<div class="pb-5" *ngIf="country;else loading">
+  <div class="row g-0 pb-3">
+    <h1>{{country.name.common}}</h1>
+  </div>
+  <div class="row g-0 gap-3">
+    <div class="col-md-4">
+      <div>
+        <h3>Names</h3>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th><strong>Common</strong></th>
+              <td>{{country.name.common}}</td>
+            </tr>
+            <tr>
+              <th >Official</th>
+              <td>{{country.name.official}}</td>
+            </tr>
+            <ng-container *ngFor="let item of getObjectKeys(country.name.nativeName).splice(-1)">
+              <tr >
+                  <th >Common (Native)</th>
+                  <td >{{ country.name.nativeName[item].common}}</td>
+              </tr>
+              <tr >
+                  <th >Official (Native)</th>
+                  <td >{{ country.name.nativeName[item].official}}</td>
+              </tr>
+            </ng-container>
+            <tr>
+              <th>Alternative spellings</th>
+              <td>{{ country.altSpellings }}</td>
+            </tr>
+            <tr>
+              <th colSpan="2">
+                <button class="accordion-button" (click)="toggleAcordeon()" type="button" >
+                    <strong>Translations</strong>
+                </button>
+              </th>
+            </tr>
+            <ng-container *ngIf="translationAcordion">
+              <tr *ngFor="let item of getObjectKeys(country.translations)">
+                <th>{{ item }}</th>
+                <td>{{ country.translations[item].common }}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3>Codes</h3>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th>ISO 3166-1 alpha-2</th>
+              <td>{{ country.cca2 }}</td>
+            </tr>
+            <tr>
+              <th>ISO 3166-1 alpha-3</th>
+              <td>{{ country.cca3 }}</td>
+            </tr>
+            <tr>
+              <th>ISO 3166-1 numeric</th>
+              <td>{{ country.ccn3 }}</td>
+            </tr>
+            <tr>
+              <th>International calling code</th>
+              <td>{{ country.idd.root.slice(-1) }}{{ country.idd.suffixes[0]}}</td>
+            </tr>
+            <tr *ngFor="let item of getObjectKeys(country.currencies)">
+              <th>ISO 4217 currency code</th>
+              <td>{{ item }}</td>
+            </tr>
+            <tr>
+              <th>Top level domain</th>
+              <td>{{ country.tld[0]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div>
+        <h3>Lenguage</h3>
+        <table class="table table-bordered">
+          <tbody>
+            <tr *ngFor="let item of getObjectKeys(country.languages).splice(-1)">
+              <th>Native language</th>
+              <td>{{ country.languages[item]}}</td>
+            </tr>
+            <tr>
+              <th colspan="2">Languages</th>
+            </tr>
+            <tr *ngFor="let item of getObjectKeys(country.languages)">
+              <th>{{ item }}</th>
+              <td>{{ country.languages[item]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3>Geography</h3>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th>Region</th>
+              <td>{{ country.region }}</td>
+            </tr>
+            <tr>
+              <th>Subregion</th>
+              <td>{{ country.subregion }}</td>
+            </tr>
+            <tr>
+              <th>Capital</th>
+              <td>{{ country.capital }}</td>
+            </tr>
+            <tr>
+              <th>Demonym</th>
+              <td>{{ country.demonyms.eng.f }}</td>
+            </tr>
+            <tr>
+              <th>Population</th>
+              <td>{{ country.population | number }}</td>
+            </tr>
+            <tr>
+              <th>Lat/Lng</th>
+              <td> <a [href]="country.maps.googleMaps" target="_blank">{{ country.latlng }}</a></td>
+            </tr>
+            <tr>
+              <th>Area</th>
+              <td>{{ country.area | number }} km²</td>
+            </tr>
+            <tr>
+              <th>Land borders</th>
+              <td> <a *ngFor="let item of country.borders" [routerLink]="[ '/countries/by', item ]">{{ item }}</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-3 bandera">
+      <img [src]="country.flags.svg" width="100%" [alt]="country.name.common">
+    </div>
+  </div>
+</div>
+

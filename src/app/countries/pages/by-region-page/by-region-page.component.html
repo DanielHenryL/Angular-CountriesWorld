@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="col-12 mt-3">
-    <shared-search-box *ngIf="selectedRegion != ''" [placeholder]="placeholder" (valueInput)="searchRegionByCountry($event)"></shared-search-box>
+    <shared-search-box *ngIf="selectedRegion != ''" [initialValue]="initialValue" [placeholder]="placeholder" (valueInput)="searchRegionByCountry($event)"></shared-search-box>
     <span *ngIf="message.length > 1" class="text-danger">{{message}}</span>
   </div>
   <div class="col-12 mt-5">

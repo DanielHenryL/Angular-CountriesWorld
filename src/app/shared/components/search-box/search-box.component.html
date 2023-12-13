@@ -3,5 +3,6 @@
   class="form-control"
   [placeholder]='placeholder'
   #inputText
+  [value]="initialValue"
   (keyup)="searchBox(inputText.value)"
 >

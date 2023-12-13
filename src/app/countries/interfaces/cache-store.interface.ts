@@ -9,10 +9,11 @@ export interface CacheStore{
 
 export interface TermCountries{
   term:string;
-  country:Country[]
+  countries:Country[]
 }
 
 export interface TermRegion{
-  term:Region;
-  country:Country[]
+  term?:string
+  countries:Country[];
+  region:Region;
 }

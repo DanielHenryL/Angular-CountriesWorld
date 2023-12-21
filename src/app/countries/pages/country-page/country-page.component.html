@@ -22,14 +22,14 @@
               <th >Official</th>
               <td>{{country.name.official}}</td>
             </tr>
-            <ng-container *ngFor="let item of getObjectKeys(country.name.nativeName).splice(-1)">
+            <ng-container *ngFor="let item of country.name.nativeName | keyvalue | slice:-1">
               <tr >
                   <th >Common (Native)</th>
-                  <td >{{ country.name.nativeName[item].common}}</td>
+                  <td >{{ item.value.common }}</td>
               </tr>
               <tr >
                   <th >Official (Native)</th>
-                  <td >{{ country.name.nativeName[item].official}}</td>
+                  <td >{{ item.value.official }}</td>
               </tr>
             </ng-container>
             <tr>
@@ -44,9 +44,9 @@
               </th>
             </tr>
             <ng-container *ngIf="translationAcordion">
-              <tr *ngFor="let item of getObjectKeys(country.translations)">
-                <th>{{ item }}</th>
-                <td>{{ country.translations[item].common }}</td>
+              <tr *ngFor="let item of country.translations | keyvalue">
+                <th>{{ item.key }}</th>
+                <td>{{ item.value.common }}</td>
               </tr>
             </ng-container>
           </tbody>
@@ -72,9 +72,9 @@
               <th>International calling code</th>
               <td>{{ country.idd.root.slice(-1) }}{{ country.idd.suffixes[0]}}</td>
             </tr>
-            <tr *ngFor="let item of getObjectKeys(country.currencies)">
+            <tr *ngFor="let item of country.currencies | keyvalue">
               <th>ISO 4217 currency code</th>
-              <td>{{ item }}</td>
+              <td>{{ item.key }}</td>
             </tr>
             <tr>
               <th>Top level domain</th>
@@ -89,16 +89,16 @@
         <h3>Lenguage</h3>
         <table class="table table-bordered">
           <tbody>
-            <tr *ngFor="let item of getObjectKeys(country.languages).splice(-1)">
+            <tr *ngFor="let item of country.languages | keyvalue | slice:-1">
               <th>Native language</th>
-              <td>{{ country.languages[item]}}</td>
+              <td>{{ item.value }}</td>
             </tr>
             <tr>
               <th colspan="2">Languages</th>
             </tr>
-            <tr *ngFor="let item of getObjectKeys(country.languages)">
-              <th>{{ item }}</th>
-              <td>{{ country.languages[item]}}</td>
+            <tr *ngFor="let item of country.languages | keyvalue">
+              <th>{{ item.key }}</th>
+              <td>{{ item.value }}</td>
             </tr>
           </tbody>
         </table>

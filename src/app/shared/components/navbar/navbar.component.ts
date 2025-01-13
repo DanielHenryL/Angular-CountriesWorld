@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  public rutas = ['home', 'about','countries']
+  public rutas = ['countries']
 }
